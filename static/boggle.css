@@ -1,0 +1,8 @@
+.newboard {
+    margin: auto;
+}
+
+.guessform {
+    display: flex;
+    justify-content: space-around;
+}
