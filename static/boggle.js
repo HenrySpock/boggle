@@ -4,35 +4,60 @@ console.log("I am here")
 
 
     
+// const guput = document.getElementsByClassName("guess")
+// const guval = guput[0]
  
 
-async handleSubmit(evt) {
-    evt.preventDefault();
-    const $guess = $(".guess", this.board);
+// async function asyncCall(evt) {
+//   // evt.preventDefault;
+//   console.log(guput);
+//   const result = await console.log(guval);
+//   // console.log(result);
+//   // expected output: "resolved"
+// }
 
-    let guess = $guess.val();
-    if (!guess) return;
+// asyncCall();
 
-    if (this.words.has(guess)) {
-      this.showMessage(`Already found ${guess}`, "err");
-      return;
-    }
 
-    // check server for validity
-    const resp = await axios.get("/check-word", { params: { word: guess }});
-    if (resp.data.result === "not-word") {
-      this.showMessage(`${guess} is not a valid English word`, "err");
-    } else if (resp.data.result === "not-on-board") {
-      this.showMessage(`${guess} is not a valid word on this board`, "err");
-    } else {
-      this.showWord(guess);
-      this.score += guess.length;
-      this.showScore();
-      this.words.add(guess);
-      this.showMessage(`Added: ${guess}`, "ok");
-    }
+wordlist = new Set()
+wordlist.add('tank')
 
-    $guess.val("").focus();
+async function handleSubmit(event) {
+  event.preventDefault();
+const gubut = document.querySelector("#gubut");
+const $guval = $(".uguess");
+const $entry = $guval[0].value.toLowerCase()
+  console.log(event) 
+  console.log(gubut) 
+  console.log($entry) 
+//   event.preventDefault();
+//   const $word = $(".word", this.board);
+
+//   let word = $word.val();
+  if (!$entry) return;
+
+  if (wordlist.has($entry)) {
+    function showMessage(`Already found ${$entry}`, "err");
+    showMessage();
+    return;
   }
 
-board.on("submit", this.handleSubmit.bind(this))
+//   // check server for validity
+//   const resp = await axios.get("/check-word", { params: { word: word }});
+//   if (resp.data.result === "not-word") {
+//     this.showMessage(`${word} is not a valid English word`, "err");
+//   } else if (resp.data.result === "not-on-board") {
+//     this.showMessage(`${word} is not a valid word on this board`, "err");
+//   } else {
+//     this.showWord(word);
+//     this.score += word.length;
+//     this.showScore();
+//     this.words.add(word);
+//     this.showMessage(`Added: ${word}`, "ok");
+//   }
+
+//   $word.val("").focus();
+}
+ 
+gubut.addEventListener("click", handleSubmit) 
+

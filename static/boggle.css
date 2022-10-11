@@ -2,7 +2,8 @@
     margin: auto;
 }
 
-.guessform {
+#title, .guessform {
     display: flex;
     justify-content: space-around;
 }
+ 
