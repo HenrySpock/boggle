@@ -19,16 +19,19 @@ console.log("I am here")
 // asyncCall();
 
 
-wordlist = new Set()
+wordlist = new Set();
+let score = 0;
+
 // wordlist.add('tank')
 
 async function handleSubmit(event) {
   event.preventDefault();
 const clmsg = document.getElementById("clmsg")
+clmsg.innerText = ''
 const clent = document.getElementById("clent")
 const gubut = document.querySelector("#gubut");
-const $guval = $(".uguess");
-const $entry = $guval[0].value.toLowerCase()
+let $guval = $(".uguess");
+let $entry = $guval[0].value.toLowerCase()
   console.log(event) 
   console.log(gubut) 
   console.log($entry) 
@@ -54,7 +57,22 @@ const $entry = $guval[0].value.toLowerCase()
   } 
   else 
   {
-    clent.append($entry);
+    wordlist.add($entry)
+
+    score += getLastItem(wordlist);
+    console.log(score);
+    let scoard = document.getElementById("clmsg")
+    let points = document.createElement("p");
+    points.innerText = ("Score: " + score)
+    scoard.append(points)
+    
+
+    // let addedList = document.getElementById("added")
+    let added = document.createElement("li");
+    added.classList.add("list")
+    added.append($entry);
+    clent.append(added);
+    console.log("wordlist: ", wordlist);
     // this.showWord(word);
     // this.score += word.length;
     // this.showScore();
@@ -62,9 +80,13 @@ const $entry = $guval[0].value.toLowerCase()
     clmsg.append(`${$entry} added to your score`, " ok");
   }
   console.log(resp)
-
-  // $word.val("").focus();
-}
  
+  $guval[0].value = ''
+}
+
+function getLastItem(_set) {
+  return Array.from(_set).pop().length;
+}
+
 gubut.addEventListener("click", handleSubmit) 
 

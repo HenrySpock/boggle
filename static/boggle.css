@@ -2,8 +2,19 @@
     margin: auto;
 }
 
-#clent, #clmsg, #title, .guessform {
+#clmsg, #title, .guessform {
     display: flex;
     justify-content: space-around;
 }
  
+.char {
+    margin:10px;
+}
+
+#clent {
+    text-align: center;
+}
+
+.list {
+    list-style-type: none;
+}

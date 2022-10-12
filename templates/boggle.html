@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/boggle.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon" /> 
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon" />
     <!-- <link rel="shortcut icon" href="#">  -->
     <!-- Getting rid of that damned favicon error. -->
     <!-- Wow. So this line of code about the favicon was repinging the route. -->
@@ -17,25 +18,14 @@
         <h1>BOGGLE</h1>
     </div>
     <table class="newboard">
-        <tr>
-            <!-- {% for row in newboard %}
-                {{row}}
-                <td>
-                    {% for char in row %}
-                        <h2>{{char}}</h2>
-                    {% endfor %}
-                    <!-- <h2>{{row}}.</h2>
-                </td> 
-            {% endfor %} -->
             {% for row in newboard %}
-            <tr>
-              {% for cell in row %}
-              <td>{{ cell }}</td>
-              {% endfor %}
-            </tr>
+                <tr>
+                    {% for char in row %}
+                        <td><h2 class="char">{{char}}</h2></td>
+                    {% endfor %}
+                </tr>
             {% endfor %}
-        </tr>
-    </table>
+     </table>
 
     <!-- <h1>{{ currboard }}</h1> -->
     <!-- Just checking that session variable passes through correctly. -->
@@ -53,8 +43,10 @@
         <!-- our JS will put messages here dynamically -->
     </p>
 
-    <p id="clent">
+    <p id="clent"> 
+        <ul class="added">
         <!-- our JS will put messages here dynamically -->
+        </ul>
     </p>
 
 <script src="http://unpkg.com/jquery"></script>
