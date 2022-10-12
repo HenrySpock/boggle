@@ -5,22 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/boggle.css">
-    <link rel="shortcut icon" href="#"> <!-- Getting rid of that damned favicon error. -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <!-- <link rel="shortcut icon" href="#">  -->
+    <!-- Getting rid of that damned favicon error. -->
+    <!-- Wow. So this line of code about the favicon was repinging the route. -->
     <title>Boggle</title>
 </head>
+
 <body>
     <div id="title">
         <h1>BOGGLE</h1>
     </div>
     <table class="newboard">
         <tr>
-            {% for row in newboard %}
+            <!-- {% for row in newboard %}
+                {{row}}
                 <td>
                     {% for char in row %}
                         <h2>{{char}}</h2>
                     {% endfor %}
-                    <!-- <h2>{{row}}.</h2> -->
-                </td>
+                    <!-- <h2>{{row}}.</h2>
+                </td> 
+            {% endfor %} -->
+            {% for row in newboard %}
+            <tr>
+              {% for cell in row %}
+              <td>{{ cell }}</td>
+              {% endfor %}
+            </tr>
             {% endfor %}
         </tr>
     </table>
@@ -28,7 +40,7 @@
     <!-- <h1>{{ currboard }}</h1> -->
     <!-- Just checking that session variable passes through correctly. -->
     <!-- method="POST" -->
-    <form  class="guessform">
+    <form  class="guessform", methods="POST">
         <!-- I forgot the method attribute. -->
         <div>
             <input name="guess" class="uguess">
@@ -37,9 +49,18 @@
         </div>
     </form>
     
+    <p id="clmsg">
+        <!-- our JS will put messages here dynamically -->
+    </p>
+
+    <p id="clent">
+        <!-- our JS will put messages here dynamically -->
+    </p>
+
 <script src="http://unpkg.com/jquery"></script>
 <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
 <script src="static/boggle.js"></script>
  
 </body>
+
 </html>

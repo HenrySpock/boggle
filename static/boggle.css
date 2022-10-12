@@ -2,7 +2,7 @@
     margin: auto;
 }
 
-#title, .guessform {
+#clent, #clmsg, #title, .guessform {
     display: flex;
     justify-content: space-around;
 }
